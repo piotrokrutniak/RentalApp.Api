@@ -41,6 +41,8 @@ namespace Infrastructure.Identity
             #region Services
             services.AddTransient<IAccountService, AccountService>();
             #endregion
+
+            #region Services Configuration
             services.Configure<JWTSettings>(configuration.GetSection("JWTSettings"));
             services.AddAuthentication(options =>
             {
@@ -88,6 +90,7 @@ namespace Infrastructure.Identity
                         },
                     };
                 });
+            #endregion
         }
     }
 }
