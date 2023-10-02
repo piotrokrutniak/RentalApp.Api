@@ -35,7 +35,6 @@ namespace WebApi.Controllers.v1
             return Ok(await Mediator.Send(command));
         }
 
-        
         // PUT api/<controller>/5
         [HttpPut("{id}")]
         //[Authorize]
@@ -48,6 +47,7 @@ namespace WebApi.Controllers.v1
             return Ok(await Mediator.Send(command));
 
         }
+        
         //DELETE api/<controller>/5
         [HttpDelete("{id}")]
         //[Authorize]
