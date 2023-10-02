@@ -1,6 +1,29 @@
  # ASP.NET Core WebApi - Clean Architecture
 <br/>
 
+# Requirements
+- Rental web app
+- Entities:
+  1. Rental pick-up locations
+    - rent and return at any given location
+    - price multiplier?
+  2. Users
+    - Reserve rental for any given date and location
+    - Track reservation history, upcoming and active ones too
+  3. Reservation
+    - Date and pick-up location
+    - User making the reservation
+    - Rented vehicle
+    - Calculated price, formula: vehicle base fee x location multiplier? x days rented
+    - Cancellation fee?
+  4. Vehicles
+    - All teslas (passenger only, no semi)
+    - VIN as main key
+    - base fee
+    - active toggle?
+  
+
+
 ### An Implementation of Clean Architecture with ASP.NET WebApi for an E-Commerce Website.
 
 1. Clone this Repository and Extract it to a Folder.
