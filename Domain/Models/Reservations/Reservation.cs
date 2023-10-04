@@ -8,7 +8,10 @@ namespace Domain.Models.Reservations
 {
     public class Reservation : AuditableBaseEntity
     {
-        public Reservation() { }
+        public Reservation()
+        {
+            Fee = CalculateFee(Vehicle);
+        }
         public Vehicle Vehicle { get; set; }
         public int VehicleId { get; set; }
         [EmailAddress]
@@ -21,7 +24,7 @@ namespace Domain.Models.Reservations
 
         private decimal CalculateFee(Vehicle vehicle)
         {
-            return vehicle.Rate * (EndDate - StartDate).Days;
+            return vehicle == null ? 0.00m : vehicle.Rate * (EndDate - StartDate).Days;
         }
 
         public void UpdateFee(Vehicle vehicle = null)

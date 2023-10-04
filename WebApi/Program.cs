@@ -8,6 +8,8 @@ using Serilog;
 using Microsoft.AspNetCore.Identity;
 using Infrastructure.Identity.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Infrastructure.Persistence.Repositories;
+using Application.Interfaces.Repositories;
 
 namespace WebApi
 {
@@ -34,9 +36,18 @@ namespace WebApi
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
+                    var locationRepository = services.GetRequiredService<ILocationRepositoryAsync>();
+                    var vehicleRepository = services.GetRequiredService<IVehicleRepositoryAsync>();
+                    var reservationRepository = services.GetRequiredService<IReservationRepositoryAsync>();
+
                     await Infrastructure.Identity.Seeds.DefaultRoles.SeedAsync(userManager, roleManager);
                     await Infrastructure.Identity.Seeds.DefaultSuperAdmin.SeedAsync(userManager, roleManager);
                     await Infrastructure.Identity.Seeds.DefaultBasicUser.SeedAsync(userManager, roleManager);
+
+                    await Infrastructure.Persistence.Seeds.DefaultVehiclesSeed.SeedAsync(vehicleRepository);
+                    await Infrastructure.Persistence.Seeds.DefaultLocationsSeed.SeedAsync(locationRepository);
+                    await Infrastructure.Persistence.Seeds.DefaultReservationsSeed.SeedAsync(reservationRepository, vehicleRepository);
+
                     Log.Information("Finished Seeding Default Data");
                     Log.Information("Application Starting");
                     host.Run();
