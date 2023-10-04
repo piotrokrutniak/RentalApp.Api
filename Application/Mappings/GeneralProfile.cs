@@ -3,12 +3,16 @@ using Application.Features.Images.Commands;
 using Domain.Models.Images;
 using Domain.Models.Locations;
 using Application.Features.Locations.Queries.All;
-using Application.Features.Vehicles.Commands;
 using Domain.Models.Vehicles;
 using Application.Features.Vehicles.Queries.All;
-using Application.Features.Reservations.Commands;
 using Application.Features.Reservations.Queries.All;
 using Domain.Models.Reservations;
+using Application.Features.Vehicles.Commands.Create;
+using Application.Features.Vehicles.Commands.Update;
+using Application.Features.Locations.Commands.Create;
+using Application.Features.Locations.Commands.Update;
+using Application.Features.Reservations.Commands.Create;
+using Application.Features.Reservations.Commands.Update;
 
 namespace Application.Mappings
 {

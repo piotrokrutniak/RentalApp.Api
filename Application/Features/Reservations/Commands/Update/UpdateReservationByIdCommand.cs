@@ -9,13 +9,13 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Reservations.Commands
+namespace Application.Features.Reservations.Commands.Update
 {
     public partial class UpdateReservationByIdCommand : IRequest<Response<int>>
     {
         public int Id { get; set; }
         public int VehicleId { get; set; }
-        public Guid UserId { get; set; }
+        public string UserEmail { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
@@ -36,7 +36,7 @@ namespace Application.Features.Reservations.Commands
             Reservation entity = await _repository.GetByIdAsync(request.Id);
 
             entity.VehicleId = request.VehicleId;
-            entity.UserId = request.UserId;
+            entity.UserEmail = request.UserEmail;
             entity.StartDate = request.StartDate;
             entity.EndDate = request.EndDate;
 

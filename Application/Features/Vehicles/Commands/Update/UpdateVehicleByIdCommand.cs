@@ -6,7 +6,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Vehicles.Commands
+namespace Application.Features.Vehicles.Commands.Update
 {
     public partial class UpdateVehicleByIdCommand : IRequest<Response<int>>
     {

@@ -1,4 +1,6 @@
-﻿using Application.Features.Reservations.Commands;
+﻿using Application.Features.Reservations.Commands.Create;
+using Application.Features.Reservations.Commands.Delete;
+using Application.Features.Reservations.Commands.Update;
 using Application.Features.Reservations.Queries.All;
 using Application.Features.Reservations.Queries.ById;
 using Microsoft.AspNetCore.Mvc;

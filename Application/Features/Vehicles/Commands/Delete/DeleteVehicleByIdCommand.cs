@@ -6,7 +6,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Vehicles.Commands
+namespace Application.Features.Vehicles.Commands.Delete
 {
     public partial class DeleteVehicleByIdCommand : IRequest<Response<int>>
     {

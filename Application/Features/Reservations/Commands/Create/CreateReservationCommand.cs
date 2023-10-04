@@ -9,12 +9,12 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Reservations.Commands
+namespace Application.Features.Reservations.Commands.Create
 {
     public partial class CreateReservationCommand : IRequest<Response<int>>
     {
         public int VehicleId { get; set; }
-        public Guid UserId { get; set; }
+        public string UserEmail { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
@@ -37,8 +37,7 @@ namespace Application.Features.Reservations.Commands
             Reservation entity = _mapper.Map<Reservation>(request);
 
             Vehicle vehicle = await _vehicleRepository.GetByIdAsync(entity.VehicleId) ?? throw new ApiException($"Vehicle with Id \"{request.VehicleId}\" not found.");
-            entity.Vehicle = vehicle;
-            entity.UpdateFee();
+            entity.UpdateFee(vehicle);
 
             await _repository.AddAsync(entity);
 

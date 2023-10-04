@@ -1,4 +1,6 @@
-﻿using Application.Features.Vehicles.Commands;
+﻿using Application.Features.Vehicles.Commands.Create;
+using Application.Features.Vehicles.Commands.Delete;
+using Application.Features.Vehicles.Commands.Update;
 using Application.Features.Vehicles.Queries.All;
 using Application.Features.Vehicles.Queries.ById;
 using Microsoft.AspNetCore.Mvc;

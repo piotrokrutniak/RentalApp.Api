@@ -37,7 +37,6 @@ namespace Application.Features.Locations.Queries.All
             return new PagedResponse<IEnumerable<GetLocationsViewModel>>(locationViewModel, validFilter.PageNumber, validFilter.PageSize, lastPage);
         }
 
-        private int ValidatePageNumber(GetLocationsQuery request, int lastPage)
         private static int ValidatePageNumber(GetLocationsQuery request, int lastPage)
         {
             if (request.PageNumber > lastPage)
@@ -48,10 +47,8 @@ namespace Application.Features.Locations.Queries.All
             return request.PageNumber;
         }
 
-        private int GetMaxPage(int pageSize, int totalCount)
         private static int GetMaxPage(int pageSize, int totalCount)
         {
-            double rawCount = totalCount / pageSize;
             double rawCount = (double)totalCount/pageSize;
 
             return (int)Math.Ceiling(rawCount);

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using Domain.Models.Locations;
 
-namespace Application.Features.Images.Commands
+namespace Application.Features.Locations.Commands.Delete
 {
     public partial class DeleteLocationByIdCommand : IRequest<Response<int>>
     {
