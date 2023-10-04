@@ -1,12 +1,10 @@
 ﻿using Application.Interfaces;
 using Domain.Common;
-using Domain.Models.Images;
+using Domain.Models.Locations;
+using Domain.Models.Reservations;
+using Domain.Models.Vehicles;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -38,8 +36,9 @@ namespace Infrastructure.Persistence.Contexts
             _authenticatedUser = authenticatedUser;
         }
 
-        public DbSet<Image> Images { get; set; }
-        //public DbSet<ImageAssignment> ImageAssignments { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

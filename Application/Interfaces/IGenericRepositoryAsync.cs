@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Domain.Common;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Interfaces
@@ -13,5 +12,6 @@ namespace Application.Interfaces
         Task<T> AddAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
+        Task<int> CountAsync();
     }
 }

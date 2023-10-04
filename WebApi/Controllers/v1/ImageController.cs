@@ -1,13 +1,11 @@
 ﻿using Application.Features.Images.Commands;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace WebApi.Controllers.v1
 {
 
-        [ApiVersion("1.0")]
+    [ApiVersion("1.0")]
     public class ImageController : BaseApiController
     {
         /*

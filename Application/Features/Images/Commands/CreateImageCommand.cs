@@ -3,9 +3,6 @@ using Application.Wrappers;
 using AutoMapper;
 using Domain.Models.Images;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using Microsoft.AspNetCore.Http;
@@ -13,7 +10,7 @@ using Application.Interfaces;
 
 namespace Application.Features.Images.Commands
 {
-        public partial class CreateImageCommand : IRequest<Response<int>>
+    public partial class CreateImageCommand : IRequest<Response<int>>
         {
         public string Name { get; set; }
         public string Description { get; set; }

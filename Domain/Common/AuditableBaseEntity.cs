@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Domain.Interfaces;
+using System;
 
 namespace Domain.Common
 {
-    public abstract class AuditableBaseEntity
+    public class AuditableBaseEntity : IEntity
     {
         public virtual int Id { get; set; }
         public string CreatedBy { get; set; }

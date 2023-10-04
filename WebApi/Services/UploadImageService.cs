@@ -1,5 +1,4 @@
-﻿using Application.DTOs.Email;
-using Application.Interfaces;
+﻿using Application.Interfaces;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
 using Google.Apis.Drive.v3.Data;
@@ -7,7 +6,6 @@ using Google.Apis.Services;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.IO;
-using System.Net;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using DriveFile = Google.Apis.Drive.v3.Data.File;
