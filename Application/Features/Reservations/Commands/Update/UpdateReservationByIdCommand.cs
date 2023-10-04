@@ -15,7 +15,7 @@ namespace Application.Features.Reservations.Commands.Update
     {
         public int Id { get; set; }
         public int VehicleId { get; set; }
-        public string UserEmail { get; set; }
+        public string Email { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
@@ -36,7 +36,7 @@ namespace Application.Features.Reservations.Commands.Update
             Reservation entity = await _repository.GetByIdAsync(request.Id);
 
             entity.VehicleId = request.VehicleId;
-            entity.UserEmail = request.UserEmail;
+            entity.Email = request.Email;
             entity.StartDate = request.StartDate;
             entity.EndDate = request.EndDate;
 
