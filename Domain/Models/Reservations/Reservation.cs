@@ -7,10 +7,7 @@ namespace Domain.Models.Reservations
 {
     public class Reservation : AuditableBaseEntity
     {
-        public Reservation()
-        {
-            Fee = CalculateFee();
-        }
+        public Reservation() { }
         public Vehicle Vehicle { get; set; }
         public int VehicleId { get; set; }
         public IdentityUser User { get; set; }
@@ -22,6 +19,11 @@ namespace Domain.Models.Reservations
         private decimal CalculateFee()
         {
             return Vehicle.Rate * (EndDate - StartDate).Days;
+        }
+
+        public void UpdateFee()
+        {
+            Fee = CalculateFee();
         }
     }
 }

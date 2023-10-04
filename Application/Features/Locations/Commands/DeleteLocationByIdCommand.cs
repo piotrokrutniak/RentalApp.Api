@@ -1,6 +1,5 @@
 ﻿using Application.Interfaces.Repositories;
 using Application.Wrappers;
-using AutoMapper;
 using MediatR;
 using System.Threading.Tasks;
 using System.Threading;

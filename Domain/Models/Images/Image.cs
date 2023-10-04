@@ -1,7 +1,5 @@
 ﻿using Domain.Common;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.Json.Serialization;
 
 namespace Domain.Models.Images

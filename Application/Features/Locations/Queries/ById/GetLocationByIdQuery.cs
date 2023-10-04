@@ -1,13 +1,12 @@
 ﻿using Application.Interfaces.Repositories;
 using Application.Wrappers;
-using AutoMapper;
 using MediatR;
 using System.Threading.Tasks;
 using System.Threading;
 using Domain.Models.Locations;
 using Application.Exceptions;
 
-namespace Application.Features.Images.Querys
+namespace Application.Features.Images.Queries
 {
     public partial class GetLocationByIdQuery : IRequest<Response<Location>>
     {

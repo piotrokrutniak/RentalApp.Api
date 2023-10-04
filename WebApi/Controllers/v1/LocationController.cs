@@ -1,5 +1,5 @@
 ﻿using Application.Features.Images.Commands;
-using Application.Features.Images.Querys;
+using Application.Features.Images.Queries;
 using Application.Features.Locations.Queries.All;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

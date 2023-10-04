@@ -1,9 +1,4 @@
-﻿using Domain.Models.Images;
-using Domain.Models.Locations;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Models.Locations;
 
 namespace Application.Interfaces.Repositories
 {

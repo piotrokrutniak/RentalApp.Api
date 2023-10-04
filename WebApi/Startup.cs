@@ -1,7 +1,5 @@
 using Application;
 using Application.Interfaces;
-using Application.Interfaces.Repositories;
-using Google.Apis.Services;
 using Infrastructure.Identity;
 using Infrastructure.Persistence;
 using Infrastructure.Shared;
