@@ -14,7 +14,7 @@ namespace Application.Features.Reservations.Commands.Create
     public partial class CreateReservationCommand : IRequest<Response<int>>
     {
         public int VehicleId { get; set; }
-        public string UserEmail { get; set; }
+        public string Email { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }

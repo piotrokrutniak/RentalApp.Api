@@ -25,6 +25,7 @@ namespace WebApi
         {
             services.AddCors();
             services.AddApplicationLayer();
+            services.AddSingleton(_config);
             services.AddIdentityInfrastructure(_config);
             services.AddPersistenceInfrastructure(_config);
             services.AddSharedInfrastructure(_config);
