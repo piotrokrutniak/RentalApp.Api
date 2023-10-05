@@ -22,5 +22,10 @@ namespace Infrastructure.Persistence.Repositories
             return await _context.Include(x => x.Reservations)
                 .SingleOrDefaultAsync(x => x.Id == id);
         }
+
+        public async Task<Vehicle> GetByVinAsync(string vin)
+        {
+            return await _context.FirstOrDefaultAsync(x => x.Vin == vin);
+        }
     }
 }

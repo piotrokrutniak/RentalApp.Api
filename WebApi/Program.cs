@@ -44,8 +44,8 @@ namespace WebApi
                     await Infrastructure.Identity.Seeds.DefaultSuperAdmin.SeedAsync(userManager, roleManager);
                     await Infrastructure.Identity.Seeds.DefaultBasicUser.SeedAsync(userManager, roleManager);
 
-                    await Infrastructure.Persistence.Seeds.DefaultVehiclesSeed.SeedAsync(vehicleRepository);
                     await Infrastructure.Persistence.Seeds.DefaultLocationsSeed.SeedAsync(locationRepository);
+                    await Infrastructure.Persistence.Seeds.DefaultVehiclesSeed.SeedAsync(vehicleRepository);
                     await Infrastructure.Persistence.Seeds.DefaultReservationsSeed.SeedAsync(reservationRepository, vehicleRepository);
 
                     Log.Information("Finished Seeding Default Data");

@@ -6,7 +6,8 @@ namespace Application.Interfaces.Repositories
 {
     public interface IReservationRepositoryAsync : IGenericRepositoryAsync<Reservation>
     {
-        Task<bool> CheckAvailabilityAsync(DateTime start, DateTime end, int vehicleId);
+        Task<bool> CheckAvailabilityByIdAsync(DateTime start, DateTime end, int vehicleId);
+        Task<bool> CheckAvailabilityByModelAsync(DateTime start, DateTime end, string model);
     }
 }
  

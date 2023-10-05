@@ -83,9 +83,12 @@ namespace Infrastructure.Persistence.Seeds
 
             };
 
-            foreach (Vehicle vehicle in vehicles)
+            if(await repositoryAsync.CountAsync() == 0)
             {
-                await repositoryAsync.AddAsync(vehicle);
+                foreach (Vehicle vehicle in vehicles)
+                {
+                    await repositoryAsync.AddAsync(vehicle);
+                }
             }
         }
     }

@@ -149,9 +149,12 @@ namespace Infrastructure.Persistence.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Vin")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(17)");
 
                     b.HasKey("Id");
+
+                    b.HasAlternateKey("Vin");
 
                     b.HasIndex("LocationId");
 

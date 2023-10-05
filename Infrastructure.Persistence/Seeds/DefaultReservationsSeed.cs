@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Application.Interfaces.Repositories;
 using Domain.Common;
 using Domain.Interfaces;
 using Domain.Models.Locations;
@@ -16,7 +17,7 @@ namespace Infrastructure.Persistence.Seeds
 {
     public class DefaultReservationsSeed
     {
-        public static async Task SeedAsync(IGenericRepositoryAsync<Reservation> reservationRepositoryAsync, IGenericRepositoryAsync<Vehicle> vehicleRepositoryAsync)
+        public static async Task SeedAsync(IGenericRepositoryAsync<Reservation> reservationRepositoryAsync, IVehicleRepositoryAsync vehicleRepositoryAsync)
         {
             List<Reservation> reservations = new()
             {
@@ -39,36 +40,41 @@ namespace Infrastructure.Persistence.Seeds
                 new Reservation
                 {
                     VehicleId = 2,
-                    Email = "",
-                    Phone = "",
+                    Email = "tim@gmail",
+                    Phone = "+44 192 032 123",
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now.AddDays(14),
                 },
                 new Reservation
                 {
-                    VehicleId = 4,
-                    Email = "",
-                    Phone = "",
+                    VehicleId = 2,
+                    Email = "kyle@outlook.com",
+                    Phone = "+44 192 721 912",
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now.AddDays(14),
                 },
                 new Reservation
                 {
-                    VehicleId = 5,
-                    Email = "",
-                    Phone = "",
+                    VehicleId = 3,
+                    Email = "brick@gmail.com",
+                    Phone = "+44 192 733 912",
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now.AddDays(14),
                 },
 
             };
 
-            foreach (Reservation reservation in reservations)
+            if (await reservationRepositoryAsync.CountAsync() == 0)
             {
-                Vehicle vehicle = await vehicleRepositoryAsync.GetByIdAsync(reservation.VehicleId);
-                reservation.UpdateFee(vehicle);
+                List<Vehicle> vehicles = (List<Vehicle>)await vehicleRepositoryAsync.GetPagedReponseAsync(1, 10);
+                foreach (Reservation reservation in reservations)
+                {
+                    Vehicle vehicle = vehicles.Skip(reservation.VehicleId).FirstOrDefault();
+                    reservation.UpdateFee(vehicle);
+                    reservation.VehicleId = vehicle.Id;
 
-                await reservationRepositoryAsync.AddAsync(reservation);
+                    await reservationRepositoryAsync.AddAsync(reservation);
+                }
             }
         }
     }

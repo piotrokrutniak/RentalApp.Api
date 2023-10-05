@@ -74,9 +74,12 @@ namespace Infrastructure.Persistence.Seeds
                 },
             };
 
-            foreach (Location location in locations)
+            if (await repositoryAsync.CountAsync() == 0)
             {
-                await repositoryAsync.AddAsync(location);
+                foreach (Location location in locations)
+                {
+                    await repositoryAsync.AddAsync(location);
+                }
             }
         }
     }

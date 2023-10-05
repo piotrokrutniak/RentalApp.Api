@@ -17,7 +17,8 @@ namespace Application.Features.Vehicles.Commands.Create
 
             RuleFor(x => x.Vin)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .Length(17);
+                .Length(17)
+                .MustAsync((x, cancellation) => IsUnique(x)).WithMessage("Vehicle with this VIN already exists.");
 
             RuleFor(x => x.Make)
                 .NotEmpty().WithMessage("{PropertyName} is required.");
@@ -27,6 +28,12 @@ namespace Application.Features.Vehicles.Commands.Create
 
             RuleFor(x => x.LocationId)
                 .GreaterThanOrEqualTo(0);
+        }
+        //Todo handle unique Vin
+
+        private async Task<bool> IsUnique(string vin)
+        {
+            return await _repository.GetByVinAsync(vin) == null;
         }
     }
 }

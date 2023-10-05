@@ -67,6 +67,10 @@ namespace Infrastructure.Persistence.Contexts
             {
                 property.SetColumnType("decimal(18,2)");
             }
+
+            builder.Entity<Vehicle>()
+                .HasAlternateKey(x => x.Vin);
+
             base.OnModelCreating(builder);
         }
     }

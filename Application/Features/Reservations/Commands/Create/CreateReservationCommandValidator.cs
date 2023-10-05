@@ -38,10 +38,10 @@ namespace Application.Features.Reservations.Commands.Create
             RuleFor(x => x)
                 .MustAsync((x, cancellation) => IsAvailable(x)).WithMessage("Vehicle not available during this period.");
         }
-
+        
         public async Task<bool> IsAvailable(CreateReservationCommand command)
         {
-            return !await _repository.CheckAvailabilityAsync(command.StartDate, command.EndDate, command.VehicleId);
+            return !await _repository.CheckAvailabilityByIdAsync(command.StartDate, command.EndDate, command.VehicleId);
         }
     }
 }
