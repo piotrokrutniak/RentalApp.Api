@@ -22,6 +22,9 @@
     - base fee
     - active toggle?
   
+### Database Structure
+
+![image](https://github.com/piotrokrutniak/RentalApp.Api/assets/91792866/fb5a0e34-27ea-4cb7-a582-6ca59e5758f3)
 
 
 ### An Implementation of Clean Architecture with ASP.NET WebApi for an E-Commerce Website.
