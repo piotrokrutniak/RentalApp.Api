@@ -38,8 +38,8 @@ namespace Infrastructure.Persistence.Repositories
                 return reservations.Where(x => IsOverlapping(x, start, end)).Any();
             }
 
-            string query = @$"SELECT TOP 1 Id FROM Reservations WHERE (StartDate BETWEEN '{start}' AND '{end}' OR EndDate BETWEEN '{start}' AND '{end}') AND VehicleId IN ({vehicleId})";
-            return await _context.FromSqlRaw(query).AnyAsync();
+            string query = @$"SELECT TOP 1 Id FROM Reservations WHERE (StartDate BETWEEN '{start:yyyy-MM-dd}' AND '{end:yyyy-MM-dd}' OR EndDate BETWEEN '{start:yyyy-MM-dd}' AND '{end:yyyy-MM-dd}') AND VehicleId IN ({vehicleId})";
+            return !await _context.FromSqlRaw(query).AnyAsync();
         }
 
         public async Task<bool> CheckAvailabilityByModelAsync(DateTime start, DateTime end, string model)
@@ -64,7 +64,7 @@ namespace Infrastructure.Persistence.Repositories
             string idList = string.Join(",", vehicles.Select(x => x.Id));
 
             string query = @$"SELECT TOP 1 Id FROM Reservations WHERE (StartDate BETWEEN '{start:yyyy-MM-dd}' AND '{end:yyyy-MM-dd}' OR EndDate BETWEEN '{start:yyyy-MM-dd}' AND '{end:yyyy-MM-dd}') AND VehicleId IN ({idList})";
-            return await _context.FromSqlRaw(query).AnyAsync();
+            return !await _context.FromSqlRaw(query).AnyAsync();
         }
 
         private bool IsOverlapping(Reservation a, DateTime startDate, DateTime endDate)
