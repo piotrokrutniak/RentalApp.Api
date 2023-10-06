@@ -15,6 +15,7 @@ namespace Application.Features.Reservations.Commands.Create
     {
         public int VehicleId { get; set; }
         public string Email { get; set; }
+        public int LocationId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }

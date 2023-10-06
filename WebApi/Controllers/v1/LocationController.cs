@@ -14,10 +14,10 @@ namespace WebApi.Controllers.v1
     {
         // GET: api/<controller>
         [HttpGet]
-        public async Task<IActionResult> Get(GetLocationsParameter filter)
+        public async Task<IActionResult> Get([FromQuery]GetLocationsParameter filter)
         {
           
-            return Ok(await Mediator.Send(new GetLocationsQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber  }));
+            return Ok(await Mediator.Send(new GetLocationsQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
         }
 
         

@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using Domain.Models.Reservations;
 using Domain.Models.Vehicles;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,5 +20,6 @@ namespace Domain.Models.Locations
         public string Phone { get; set; }
         public bool Active { get; set; }
         public virtual List<Vehicle> Vehicles { get; set; }
+        public virtual List<Reservation> Reservations { get; set; }
     }
 }

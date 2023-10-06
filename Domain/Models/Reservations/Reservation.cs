@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using Domain.Models.Locations;
 using Domain.Models.Vehicles;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -13,6 +14,8 @@ namespace Domain.Models.Reservations
         }
         public Vehicle Vehicle { get; set; }
         public int VehicleId { get; set; }
+        public Location Location { get; set; }
+        public int LocationId { get; set; }
         [EmailAddress]
         public string Email { get; set; }
         [Phone]

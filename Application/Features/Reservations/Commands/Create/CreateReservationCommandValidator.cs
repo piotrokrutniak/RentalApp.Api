@@ -18,13 +18,17 @@ namespace Application.Features.Reservations.Commands.Create
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .GreaterThanOrEqualTo(0);
 
+            RuleFor(x => x.LocationId)
+                .NotEmpty().WithMessage("{PropertyName} is required.")
+                .GreaterThanOrEqualTo(0);
+
             RuleFor(x => x.StartDate)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .GreaterThanOrEqualTo(_dateTimeService.NowUtc);
+                .GreaterThanOrEqualTo(_dateTimeService.NowUtc.Date);
 
             RuleFor(x => x.EndDate)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .GreaterThan(x => x.StartDate.AddDays(1));
+                .GreaterThanOrEqualTo(x => x.StartDate.AddDays(1));
 
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("{PropertyName} is required.");
@@ -35,7 +39,7 @@ namespace Application.Features.Reservations.Commands.Create
         
         public async Task<bool> IsAvailable(CreateReservationCommand command)
         {
-            return !await _repository.CheckAvailabilityByIdAsync(command.StartDate, command.EndDate, command.VehicleId);
+            return await _repository.CheckAvailabilityByIdAsync(command.StartDate, command.EndDate, command.VehicleId);
         }
     }
 }
