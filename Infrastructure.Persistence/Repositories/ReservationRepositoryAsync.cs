@@ -44,7 +44,7 @@ namespace Infrastructure.Persistence.Repositories
 
         public async Task<bool> CheckAvailabilityByModelAsync(DateTime start, DateTime end, string model)
         {
-            List<Vehicle> vehicles = await _vehicleContext.Where(x => x.Model.ToUpper() == model.ToUpper()).ToListAsync();
+            List<Vehicle> vehicles = await _vehicleContext.Where(x => model == null || x.Model.Contains(model)).ToListAsync();
 
             if (!vehicles.Any())
             {
