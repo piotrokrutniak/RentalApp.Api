@@ -14,6 +14,7 @@ namespace Application.Features.Vehicles.Queries.All
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
         public string OrderBy { get; set; }
+        public string Model { get; set; }
     }
     public class GetVehiclesQueryHandler : IRequestHandler<GetVehicleQuery, PagedResponse<IEnumerable<GetVehicleViewModel>>>
     {
@@ -32,7 +33,7 @@ namespace Application.Features.Vehicles.Queries.All
             request.PageNumber = ValidatePageNumber(request, lastPage);
 
             var validFilter = _mapper.Map<GetVehicleParameter>(request);
-            var entity = await _repository.GetPagedReponseAsync(validFilter.PageNumber, validFilter.PageSize);
+            var entity = await _repository.GetPagedReponseAsync(validFilter.PageNumber, validFilter.PageSize, validFilter.Model);
             var entityViewModel = _mapper.Map<IEnumerable<GetVehicleViewModel>>(entity);
             return new PagedResponse<IEnumerable<GetVehicleViewModel>>(entityViewModel, validFilter.PageNumber, validFilter.PageSize, lastPage);
         }

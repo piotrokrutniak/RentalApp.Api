@@ -14,10 +14,10 @@ namespace WebApi.Controllers.v1
     {
         // GET: api/<controller>
         [HttpGet]
-        public async Task<IActionResult> Get(GetVehicleParameter filter)
+        public async Task<IActionResult> Get([FromQuery] GetVehicleParameter filter)
         {
 
-            return Ok(await Mediator.Send(new GetVehicleQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
+            return Ok(await Mediator.Send(new GetVehicleQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber, Model = filter.Model }));
         }
 
         // GET api/<controller>/5
@@ -31,7 +31,7 @@ namespace WebApi.Controllers.v1
         [HttpPost]
         //[Authorize(Roles= "Moderator,SuperAdmin,Admin")]
         //[Authorize]
-        public async Task<IActionResult> Post( CreateVehicleCommand command)
+        public async Task<IActionResult> Post(CreateVehicleCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

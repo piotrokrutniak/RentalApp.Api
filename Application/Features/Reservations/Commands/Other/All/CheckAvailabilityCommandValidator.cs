@@ -1,9 +1,10 @@
 ﻿using Application.Interfaces;
 using FluentValidation;
+using System;
 
-namespace Application.Features.Reservations.Commands.Other
+namespace Application.Features.Reservations.Commands.Other.All
 {
-    public class CheckAvailabilityCommandValidator : AbstractValidator<CheckAvailabilityCommand>
+    public class CheckAvailabilityCommandValidator : AbstractValidator<CheckAvailabilityByModelCommand>
     {
         private readonly IDateTimeService _dateTimeService;
         public CheckAvailabilityCommandValidator(IDateTimeService dateTimeService)
@@ -15,7 +16,7 @@ namespace Application.Features.Reservations.Commands.Other
 
             RuleFor(x => x.StartDate)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .GreaterThanOrEqualTo(_dateTimeService.NowUtc);
+                .GreaterThanOrEqualTo(_dateTimeService.NowUtc.Date);
 
             RuleFor(x => x.EndDate)
                 .NotEmpty().WithMessage("{PropertyName} is required.")

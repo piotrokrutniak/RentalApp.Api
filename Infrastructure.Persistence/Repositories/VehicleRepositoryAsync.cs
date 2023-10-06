@@ -3,6 +3,8 @@ using Domain.Models.Vehicles;
 using Infrastructure.Persistence.Contexts;
 using Infrastructure.Persistence.Repository;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Persistence.Repositories
@@ -25,6 +27,14 @@ namespace Infrastructure.Persistence.Repositories
         public async Task<Vehicle> GetByVinAsync(string vin)
         {
             return await _context.FirstOrDefaultAsync(x => x.Vin == vin);
+        }
+
+        public async Task<IReadOnlyList<Vehicle>> GetPagedReponseAsync(int pageNumber, int pageSize, string model = "")
+        {
+            return await _context.Where(x => x.Model.Contains(model))
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
         }
     }
 }

@@ -6,16 +6,16 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Reservations.Commands.Other
+namespace Application.Features.Reservations.Commands.Other.All
 {
-    public partial class CheckAvailabilityCommand : IRequest<Response<bool>>
+    public partial class CheckAvailabilityByModelCommand : IRequest<Response<bool>>
     {
         public string Model { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
 
-    public class CheckAvailabilityCommandHandler : IRequestHandler<CheckAvailabilityCommand, Response<bool>>
+    public class CheckAvailabilityCommandHandler : IRequestHandler<CheckAvailabilityByModelCommand, Response<bool>>
     {
         private readonly IReservationRepositoryAsync _repository;
         private readonly IVehicleRepositoryAsync _vehicleRepository;
@@ -28,7 +28,7 @@ namespace Application.Features.Reservations.Commands.Other
             _mapper = mapper;
         }
 
-        public async Task<Response<bool>> Handle(CheckAvailabilityCommand request, CancellationToken cancellationToken)
+        public async Task<Response<bool>> Handle(CheckAvailabilityByModelCommand request, CancellationToken cancellationToken)
         {
             return new Response<bool>(await _repository.CheckAvailabilityByModelAsync(request.StartDate, request.EndDate, request.Model));
         }

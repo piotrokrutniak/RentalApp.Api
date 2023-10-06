@@ -1,6 +1,7 @@
 ﻿using Application.Features.Reservations.Commands.Create;
 using Application.Features.Reservations.Commands.Delete;
-using Application.Features.Reservations.Commands.Other;
+using Application.Features.Reservations.Commands.Other.All;
+using Application.Features.Reservations.Commands.Other.ById;
 using Application.Features.Reservations.Commands.Update;
 using Application.Features.Reservations.Queries.All;
 using Application.Features.Reservations.Queries.ById;
@@ -38,10 +39,19 @@ namespace WebApi.Controllers.v1
         }
 
         // POST api/<controller>
-        [HttpPost("/CheckAvailability/")]
+        [HttpPost("/CheckAvailabilityByModel/")]
         //[Authorize(Roles= "Moderator,SuperAdmin,Admin")]
         //[Authorize]
-        public async Task<IActionResult> Post(CheckAvailabilityCommand command)
+        public async Task<IActionResult> Post(CheckAvailabilityByModelCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
+        // POST api/<controller>
+        [HttpPost("/CheckAvailabilityByid/")]
+        //[Authorize(Roles= "Moderator,SuperAdmin,Admin")]
+        //[Authorize]
+        public async Task<IActionResult> Post(CheckAvailabilityByIdCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
