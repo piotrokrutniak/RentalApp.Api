@@ -46,11 +46,11 @@ namespace Infrastructure.Persistence.Repositories
 
         public async Task<bool> CheckAvailabilityByModelAsync(DateTime start, DateTime end, string model)
         {
-            List<Vehicle> vehicles = await _vehicleContext.Where(x => x.Model == model).ToListAsync();
+            List<Vehicle> vehicles = await _vehicleContext.Where(x => x.Model.ToUpper() == model.ToUpper()).ToListAsync();
 
             if (!vehicles.Any())
             {
-                throw new ArgumentException($"No vehicles with matching model \"{model}\" found.");
+                throw new ArgumentException($"No available vehicles with matching model \"{model}\" found.");
             }
 
             if (_inMemory)

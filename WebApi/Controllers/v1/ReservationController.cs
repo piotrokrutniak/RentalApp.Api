@@ -15,7 +15,7 @@ namespace WebApi.Controllers.v1
     {
         // GET: api/<controller>
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetReservationParameter filter)
+        public async Task<IActionResult> Get(GetReservationParameter filter)
         {
 
             return Ok(await Mediator.Send(new GetReservationQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
@@ -32,7 +32,7 @@ namespace WebApi.Controllers.v1
         [HttpPost]
         //[Authorize(Roles= "Moderator,SuperAdmin,Admin")]
         //[Authorize]
-        public async Task<IActionResult> Post([FromForm] CreateReservationCommand command)
+        public async Task<IActionResult> Post(CreateReservationCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
@@ -41,7 +41,7 @@ namespace WebApi.Controllers.v1
         [HttpPost("/CheckAvailability/")]
         //[Authorize(Roles= "Moderator,SuperAdmin,Admin")]
         //[Authorize]
-        public async Task<IActionResult> Post([FromForm] CheckAvailabilityCommand command)
+        public async Task<IActionResult> Post(CheckAvailabilityCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

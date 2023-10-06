@@ -14,7 +14,7 @@ namespace WebApi.Controllers.v1
     {
         // GET: api/<controller>
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetLocationsParameter filter)
+        public async Task<IActionResult> Get(GetLocationsParameter filter)
         {
           
             return Ok(await Mediator.Send(new GetLocationsQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber  }));
@@ -32,7 +32,7 @@ namespace WebApi.Controllers.v1
         [HttpPost]
         //[Authorize(Roles= "Moderator,SuperAdmin,Admin")]
         //[Authorize]
-        public async Task<IActionResult> Post([FromForm] CreateLocationCommand command)
+        public async Task<IActionResult> Post(CreateLocationCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
