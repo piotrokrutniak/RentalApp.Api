@@ -1,5 +1,4 @@
 ﻿using Domain.Models.Vehicles;
-using Microsoft.AspNetCore.Identity;
 using System;
 
 namespace Application.Features.Reservations.Queries.All

@@ -1,16 +1,10 @@
 ﻿using Application.Interfaces;
 using Application.Interfaces.Repositories;
-using Domain.Common;
-using Domain.Interfaces;
-using Domain.Models.Locations;
 using Domain.Models.Reservations;
 using Domain.Models.Vehicles;
-using Infrastructure.Persistence.Repositories;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Persistence.Seeds

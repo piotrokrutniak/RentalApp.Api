@@ -1,11 +1,6 @@
 ﻿using Application.Interfaces;
-using Domain.Common;
-using Domain.Models.Locations;
 using Domain.Models.Vehicles;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Persistence.Seeds

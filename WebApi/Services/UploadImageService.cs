@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using DriveFile = Google.Apis.Drive.v3.Data.File;
 namespace WebApi.Services
 {
-    public class UploadImageService : IUploadImageService
+    public class UploadImageService // : IUploadImageService
     {
         private GoogleCredential Credentials;
         public DriveService driveService;
@@ -109,7 +109,7 @@ namespace WebApi.Services
         public async Task<bool> DeleteImage(string imageId)
         {
             var request = driveService.Files.Delete(imageId);
-            bool success = request.ExecuteAsync().IsCompletedSuccessfully;
+            bool success =  request.ExecuteAsync().IsCompletedSuccessfully;
 
             return success;
         }

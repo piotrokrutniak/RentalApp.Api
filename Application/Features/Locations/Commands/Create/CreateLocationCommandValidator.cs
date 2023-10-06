@@ -1,11 +1,5 @@
-﻿using Application.Features.Locations.Commands.Create;
-using Application.Interfaces.Repositories;
+﻿using Application.Interfaces.Repositories;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Locations.Commands.Create
 {

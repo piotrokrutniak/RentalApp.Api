@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Application.Features.Images.Commands;
-using Domain.Models.Images;
 using Domain.Models.Locations;
 using Application.Features.Locations.Queries.All;
 using Domain.Models.Vehicles;
@@ -20,8 +18,6 @@ namespace Application.Mappings
     {
         public GeneralProfile()
         {
-            CreateMap<CreateImageCommand, Image>();
-
             CreateMap<CreateVehicleCommand, Vehicle>();
             CreateMap<UpdateVehicleByIdCommand, Vehicle>();
             CreateMap<GetVehicleQuery, GetVehicleParameter>();

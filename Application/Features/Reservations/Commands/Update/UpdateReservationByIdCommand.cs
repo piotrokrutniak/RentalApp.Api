@@ -2,9 +2,7 @@
 using Application.Wrappers;
 using AutoMapper;
 using Domain.Models.Reservations;
-using Domain.Models.Vehicles;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

@@ -35,7 +35,6 @@ namespace WebApi
             services.AddApiVersioningExtension();
             services.AddHealthChecks();
             services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
-            services.AddSingleton<IUploadImageService, UploadImageService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

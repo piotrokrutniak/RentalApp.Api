@@ -8,7 +8,6 @@ using Serilog;
 using Microsoft.AspNetCore.Identity;
 using Infrastructure.Identity.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Infrastructure.Persistence.Repositories;
 using Application.Interfaces.Repositories;
 
 namespace WebApi

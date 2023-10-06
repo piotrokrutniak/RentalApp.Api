@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces.Repositories;
-using Domain.Models.Reservations;
 using Domain.Models.Vehicles;
 using Infrastructure.Persistence.Contexts;
 using Infrastructure.Persistence.Repository;

@@ -1,6 +1,5 @@
 ﻿using Domain.Common;
 using Domain.Models.Vehicles;
-using Microsoft.AspNetCore.Identity;
 using System;
 using System.ComponentModel.DataAnnotations;
 
