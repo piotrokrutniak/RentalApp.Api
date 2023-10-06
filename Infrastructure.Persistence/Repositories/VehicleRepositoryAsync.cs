@@ -31,7 +31,7 @@ namespace Infrastructure.Persistence.Repositories
 
         public async Task<IReadOnlyList<Vehicle>> GetPagedReponseAsync(int pageNumber, int pageSize, string model = "")
         {
-            return await _context.Where(x => x.Model.Contains(model))
+            return await _context.Where(x => model == null || x.Model.Contains(model))
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
