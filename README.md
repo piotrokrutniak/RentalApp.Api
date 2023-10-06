@@ -23,6 +23,17 @@
     - VIN as an alternate key
     - base fee
 
+### API Capabilities
+
+API is capable of all CRUD operations on Location, Vehicle, and Reservation models.
+All entities are validated using Abstract Validator before any DB operations, besides that there is also business validation.
+
+No business logic is hard-coded, the fees may be adjusted without altering previous reservations, locations and vehicles easily added.
+
+Vehicles must have a unique VIN number, reservations can't overlap for a specific vehicle, etc. Most of these checks are available as an API method.
+
+The authentication and authorization implementation is in place but it's not being used on any method due to how simple the front-end currently is.
+
 ### Database Structure
 If the task was not in C# I'd probably use a JS API with NoSQL database behind it. Instead, I've used SQL Server with EntityFramework.
 
@@ -51,15 +62,6 @@ The API is supported by [Next.js web app](https://github.com/piotrokrutniak/Rent
 Alternatively, you can switch the UseInMemoryDatabase flag in appsettings.json and use the in-memory database.
 
 Swagger is available at ../swagger/index.html endpoint.
-
-### API Capabilities
-
-API is capable of all CRUD operations on Location, Vehicle, and Reservation models.
-All entities are validated using Abstract Validator before any DB operations, besides that there is also business validation.
-
-Vehicles must have a unique VIN number, reservations can't overlap for a specific vehicle, etc. Most of these checks are available as an API method.
-
-The authentication and authorization implementation is in place but it's not being used on any method due to how simple the front-end currently is.
 
 ### Default Roles & Credentials
 As soon you build and run your application, default users and roles get added to the database.
