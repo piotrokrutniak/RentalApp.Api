@@ -1,4 +1,4 @@
- # ASP.NET Core WebApi - Clean Architecture
+ # ASP.NET Core WebApi - Rental App
 <br/>
 
 # Requirements
@@ -11,23 +11,33 @@
     - Reserve rental for any given date and location
     - Track reservation history, upcoming and active ones too
   3. Reservation
-    - Date and pick-up location
-    - User making the reservation
+    - Date range and pick-up location
+    - Details of the user making a reservation
     - Rented vehicle
-    - Calculated price, formula: vehicle base fee x location multiplier? x days rented
+    - Calculated price, formula: vehicle base fee x days rented
     - Cancellation fee?
+    - Can't be booked retrospectively
+    - Rentals can't overlap on the same vehicle
   4. Vehicles
     - All teslas (passenger only, no semi)
-    - VIN as main key
+    - VIN as an alternate key
     - base fee
-    - active toggle?
-  
+
 ### Database Structure
+If the task was not in C# I'd probably use a JS API with NoSQL database behind it. Instead, I've used SQL Server with EntityFramework.
 
-![image](https://github.com/piotrokrutniak/RentalApp.Api/assets/91792866/fb5a0e34-27ea-4cb7-a582-6ca59e5758f3)
+I've slightly adjusted the vehicle schema to contain car make as well if the app needs to handle other makes than Tesla.
+The pick-up location is a part of the reservation to make sure the car will be in the requested rental location.
+The return location should be set as a location in the vehicle at the end of the rental.
+Fees are calculated upon rental and stored in the Reservations table.
 
+![image](https://github.com/piotrokrutniak/RentalApp.Api/assets/91792866/8a747e0f-e145-4abc-84df-c13f72d7b656)
 
-### An Implementation of Clean Architecture with ASP.NET WebApi for an E-Commerce Website.
+### Front-End
+
+The API is supported by [Next.js web app](https://github.com/piotrokrutniak/RentalApp.WebUi/), in the current scope it's capable of searching vehicles by model, checking their  availability, and booking them.
+
+### An Implementation of Clean Architecture with ASP.NET WebApi for a rental app.
 
 1. Clone this Repository and Extract it to a Folder.
 3. Change the Connection Strings for the Application and Identity in the WebApi/appsettings.json - (WebApi Project)
@@ -39,6 +49,17 @@
 - dotnet ef database update -c IdentityDbContext --project WebApi
 
 Alternatively, you can switch the UseInMemoryDatabase flag in appsettings.json and use the in-memory database.
+
+Swagger is available at ../swagger/index.html endpoint.
+
+### API Capabilities
+
+API is capable of all CRUD operations on Location, Vehicle, and Reservation models.
+All entities are validated using Abstract Validator before any DB operations, besides that there is also business validation.
+
+Vehicles must have a unique VIN number, reservations can't overlap for a specific vehicle, etc. Most of these checks are available as an API method.
+
+The authentication and authorization implementation is in place but it's not being used on any method due to how simple the front-end currently is.
 
 ### Default Roles & Credentials
 As soon you build and run your application, default users and roles get added to the database.
@@ -54,14 +75,3 @@ Here are the credentials for the default users.
 - Email - basic@gmail.com  / Password - 123Pa$$word!
 
 You can use these default credentials to generate valid JWTokens at the ../api/account/authenticate endpoint.
-
-### Front-End
-The front-end for this app may be found in [this](https://github.com/piotrokrutniak/hardware-onion-store) repository.
-
-### Google Drive Integration
-To utilize the Google Drive API Integration you will need to obtain a JSON file for OAuth2 authorization.
-More details on this here: https://developers.google.com/identity/protocols/oauth2
-
-Simply go through the setup, insert the JSON file to the root folder of WebAPI project and rename to credentials.json
-
-![image](https://github.com/piotrokrutniak/HardwareOnion/assets/91792866/4f067666-200b-4a38-a2ae-71ef3044caf0)
